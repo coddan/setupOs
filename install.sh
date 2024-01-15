@@ -221,7 +221,7 @@ createSymLinks() {
     mkdir -p ~/.config
 
     # Symlinks at .config
-    ln -fsv ~/git/nvim.coddan                     ~/.config/nvim
+    ln -fsv ~/git/nvim                     ~/.config/nvim
 
     # Symlinks at $HOME
     #ln -fsv ~/git/dotfiles/bash/bash_logout      ~/.bash_logout
