@@ -302,15 +302,6 @@ loadNeovimPlugins() {
   fi
 }
 
-# -------------------------------------------------------------------------- }}}
-# {{{ loadVimPlugins
-
-loadVimPlugins() {
-  if [[ $vimPluginsFlag == 1 ]]; then
-    say 'Loading vim plugins.'
-    vim
-  fi
-}
 
 # -------------------------------------------------------------------------- }}}
 # {{{ Echo something with a separator line.
