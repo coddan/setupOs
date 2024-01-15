@@ -56,7 +56,11 @@ main() {
   # Install desktop applications.
   installOtherApps
 
+  # Final personalization.
+  swapCapsLockAndEscKey
+  [[ -f $HOME/.bashrc ]] && source "$HOME/.bashrc"
 }
+
 
 # -------------------------------------------------------------------------- }}}
 # {{{ Tell them what is about to happen.
