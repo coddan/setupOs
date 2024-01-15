@@ -1,0 +1,97 @@
+# {{{ pacman packages
+
+pacman_packages=(
+  "base-devel"
+  "cmake"
+  "curl"
+  "dunst"
+  "git"
+  "go"
+  "meld"
+  "ninja"
+  "reflector"
+  "openssh"
+  "openssl"
+  "python"
+  "screenkey"
+  "slop"
+  "tmux"
+  "tree-sitter"
+  "unzip"
+  "which"
+  "wget"
+  "xclip"
+  "xdo"
+  "xdotool"
+  "xsel"
+)
+
+# -------------------------------------------------------------------------- }}}
+# {{{ luarocks packages
+
+luarocks_packages=(
+  "jsregexp"
+)
+
+
+# -------------------------------------------------------------------------- }}}
+# {{{ pip packages
+
+pip_packages=(
+  "ueberzug"
+  "pynvim"
+  "neovim-remote"
+)
+
+# -------------------------------------------------------------------------- }}}
+# {{{ tex pacakges
+
+tex_packages=(
+  "texlive-bin"
+  "texlive-binextra"
+  "texlive-core"
+  "texlive-latexextra"
+  "texlive-music"
+  "texlive-pictures"
+  "texlive-publishers"
+  "texlive-science"
+)
+
+# -------------------------------------------------------------------------- }}}
+# {{{ yay packages
+
+yay_packages=(
+  "bashtop"
+  "bat"
+  "dunst"
+  "exa"
+  "fd"
+  "freerdp"
+  "graphviz"
+  "go"
+  "giy-htmldocs"
+  "jre-openjdk-headless"
+  "kubectl"
+  "luarocks"
+  "nodejs"
+  "npm"
+  "pandoc"
+  "poppler"
+  "python"
+  "python-pip"
+  "ripgrep"
+  "ripgrep-all"
+  "slop"
+  "tldr"
+)
+
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Other packages
+
+other_packages=(
+  "dotnet-runtime"
+  "dotnet-sdk"
+)
+
+# -------------------------------------------------------------------------- }}}

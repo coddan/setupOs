@@ -1,0 +1,35 @@
+#!/bin/bash
+# {{{ Notes
+#
+# Notes:
+#   1) 0 == false && 1 == true ... Duh!
+#   2) Options are listed alphabetically only because I scan them faster.
+#
+#shellcheck disable=SC2034
+#
+# -------------------------------------------------------------------------- }}}
+# {{{ Products to install.
+
+gitBashPromptFlag=1
+luarocksPackages=1
+lunarVimFlag=1
+myReposFlag=1
+neovimBuildFlag=1
+neovimPluginsFlag=1
+osUpdateFlag=1
+osUpdateKeysFlag=1
+otherAppsFlag=1
+pacmanPackagesFlag=1
+pipPackagesFlag=1
+symlinksFlag=1
+texPackagesFlag=1
+vimPluginsFlag=1
+yayPackagesFlag=1
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Other variables used during product installation.
+
+# The root personal repositories are cloned to.
+cloneRoot=$HOME/git
+
+# -------------------------------------------------------------------------- }}}
