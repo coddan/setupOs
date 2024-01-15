@@ -39,6 +39,11 @@ main() {
   cloneBashGitPrompt
   cloneMyRepos
   
+  # Install programming languages.
+  installRuby
+  installRubyGems
+  installRust
+
 
   # Build applications from source code.
   buildNeovim
@@ -191,6 +196,58 @@ cloneBashGitPrompt() {
     src=https://github.com/magicmonty/bash-git-prompt
     dst=~/.bash-git-prompt
     git clone "$src" "$dst"
+  fi
+}
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Install Ruby
+
+installRuby() {
+  if [[ $rbenvFlag == 1 ]]; then
+
+    say 'Installing ruby-build dependencies.'
+    sudo pacman -Syu --noconfirm "${ruby_build_packages[@]}"
+
+    say 'Acquire Ruby dependencies.'
+    yay -S --noconfirm \
+      rbenv \
+      ruby-build \
+
+    say 'Build and install Ruby.'
+    eval "$(rbenv init -)"
+    rbenv install "$rubyVersion"
+    rbenv global "$rubyVersion"
+
+    echo 'Ruby installed.'
+  fi
+}
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Install Ruby Gems
+
+installRubyGems() {
+  if [[ $rbenvFlag == 1 ]]; then
+
+    # Install Ruby Gems
+    gem install \
+      bundler \
+      rake \
+      rspec \
+      neovim
+
+    echo 'Ruby Gems installed.'
+  fi
+}
+
+# -------------------------------------------------------------------------- }}}
+# {{{ Install Rust
+
+installRust() {
+  if [[ $rustFlag == 1 ]]; then
+
+    # Install Rust
+    curl --proto '=https' --tlsv1.2 -sFf https://sh.rustup.rs | sh
+    echo 'Rust installed.'
   fi
 }
 
