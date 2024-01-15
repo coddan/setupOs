@@ -1,0 +1,1 @@
+some stuff stolen from: https://github.com/Traap
