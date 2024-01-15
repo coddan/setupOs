@@ -263,9 +263,9 @@ deleteSymLinks() {
     rm -rfv ~/.config/nvim
 
     # Symlinks at $HOME
-    #rm -rfv ~/.bash_logout
-    #rm -rfv ~/.bash_profile
-    #rm -rfv ~/.bashrc
+    rm -rfv ~/.bashrc
+    rm -rfv ~/.gitconfig
+    rm -rfv ~/.gitignore_global
   fi
 }
 
@@ -281,10 +281,9 @@ createSymLinks() {
     ln -fsv ~/git/nvim                     ~/.config/nvim
 
     # Symlinks at $HOME
-    #ln -fsv ~/git/dotfiles/bash/bash_logout      ~/.bash_logout
-    #ln -fsv ~/git/dotfiles/bash/bash_profile     ~/.bash_profile
-    #ln -fsv ~/git/dotfiles/bash/bashrc           ~/.bashrc
-
+    ln -fsv ~/git/dotfiles/bash/bashrc           ~/.bashrc
+    ln -fsv ~/git/dotfiles/git/gitconfig         ~/.gitconfig
+    ln -fsv ~/git/dotfiles/git/gitignore_global  ~/.gitignore_global
  fi
 }
 
