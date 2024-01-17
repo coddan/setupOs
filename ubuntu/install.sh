@@ -48,7 +48,7 @@ loadConfig() {
     source "$f"
   done
 
-  [[ $missingFile == 1 ]] && say 'Missing file(s) program exiting.' && exit
+  [[ $missingFile == 1 ]] && echo 'Missing file(s) program exiting.' && exit
 
 }
 # -------------------------------------------------------------------------- }}}
@@ -56,6 +56,7 @@ loadConfig() {
 
 updateOS() {
   if [[ $osUpdateFlag == 1 ]]; then
+    echo 'Updating OS.'
     sudo apt-get -y update
     sudo apt-get -y upgrade
     sudo apt-get -y autoremove
@@ -67,6 +68,7 @@ updateOS() {
 
 installDefaultPackages() {
   if [[ $osUpdateFlag == 1 ]]; then
+    echo 'Installing default packages.'
     sudo apt-get install -y "${Default_Packages[@]}"
   fi
 }
@@ -77,6 +79,7 @@ installDefaultPackages() {
 
 installMikTeX() {
   if [[ $miktexFlag == 1 ]]; then
+    echo 'Installing mixtex.'
 
     # Register GPG key for Ubuntu and Linux Mint.
     sudo apt-key adv \
@@ -112,6 +115,7 @@ installMikTeX() {
 
 installTexLive() {
   if [[ $texliveFlag == 1 ]]; then
+    echo 'installing texlive.'
 
     # TexLive compnents
     sudo apt-get -y install "${TexLive_Packages[@]}"
@@ -137,7 +141,8 @@ installTexLive() {
 # X Windoz support.
 
 installXWindows() {
-  [[ $xWindowsFlag == 1 ]] \
+  [[ $xWindowsFlag == 1 ]]
+    echo 'Installing xWindows.'
     && sudo sudo apt-get install -y "${XWindows_Packages[@]}" \
     && echo "X Windows support installed."
 }
@@ -147,6 +152,7 @@ installXWindows() {
 
 installRbEnv() {
   if [[ $rbenvFlag == 1 ]]; then
+    echo 'Installing RbENV.'
 
     # Install rbenv dependencies.
     sudo apt-get -y install "${RbEnv_Packages[@]}"
@@ -163,6 +169,7 @@ installRbEnv() {
 
 installRubyBuild() {
   if [[ $rbenvFlag == 1 ]]; then
+    echo 'Installing RubyBuild OS.'
 
     git clone https://github.com/rbenv/ruby-build.git \
         $HOME/.rbenv/plugins/ruby-build
@@ -177,6 +184,7 @@ installRubyBuild() {
 
 updateBashRc() {
   if [[ $rbenvFlag == 1 ]]; then
+    echo 'updating bashRC.'
 
     echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.bashrc
     echo 'eval "$(rbenv init -)"' >> $HOME/.bashrc
@@ -196,7 +204,7 @@ updateBashRc() {
 
 installBashGitPrompt() {
   if [[ $gitBashPromptFlag == 1 ]]; then
-    say 'Instgall bash-git-prompt.'
+    echo 'Instgall bash-git-prompt.'
     rm -rf ~/.bash-git-prompt
     src=https://github.com/magicmonty/bash-git-prompt
     dst=~/.bash-git-prompt
@@ -208,7 +216,7 @@ installBashGitPrompt() {
 
 installRuby() {
   if [[ $rbenvFlag == 1 ]]; then
-
+    echo 'Installing Ruby.'
     rbenv init
     rbenv install $rubyVersion
     rbenv global $rubyVersion
@@ -222,7 +230,7 @@ installRuby() {
 
 installRubyGems() {
   if [[ $rbenvFlag == 1 ]]; then
-
+    echo 'Installing rubygems.'
     # Install Ruby Gems
     gem install \
         bundler \
@@ -238,7 +246,7 @@ installRubyGems() {
 
 installRust() {
   if [[ $rustFlag == 1 ]]; then
-
+    echo 'Installing rust.'
     echo "Install rust from a subshell."
     (
       curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -252,7 +260,7 @@ installRust() {
 
 installRustPrograms() {
   if [[ $rustProgramsFlag == 1 ]]; then
-
+    echo 'Installing rust programs.'
     cargo install exa
 
   fi
@@ -263,7 +271,7 @@ installRustPrograms() {
 
 installMutt() {
   if [[ $muttFlag == 1 ]]; then
-
+    echo 'Installing mutt.'
     sudo apt-get install -y "${Mutt_Packages[@]}"
 
     git clone https://github.com/LukeSmithxyz/mutt-wizard
@@ -284,6 +292,7 @@ installMutt() {
 
 installJavaJre() {
   if [[ $javaJreFlag == 1 ]]; then
+    echo 'Installing java jre.'
     sudo apt-get install -y "${JavaJre_Packages[@]}"
   fi
 }
@@ -293,7 +302,7 @@ installJavaJre() {
 
 installPipPackages() {
   if [[ $pipPackagesFlag == 1 ]]; then
-    say 'Installing pip packages.'
+    echo 'Installing pip packages.'
     pip install "${pip_packages[@]}"
   fi
 }
@@ -303,7 +312,7 @@ installPipPackages() {
 
 cloneMyRepos() {
   if [[ $myReposFlag == 1 ]]; then
-    say 'Cloning my repositories.'
+    echo 'Cloning my repositories.'
     for r in "${repos[@]}"
     do
       src=https://github.com/coddan/$r.git
@@ -336,7 +345,7 @@ deleteSymLinks() {
 
 createSymLinks() {
   if [[ $symlinksFlag == 1 ]]; then
-    say 'Creating symbolic links.'
+    echo 'Creating symbolic links.'
     mkdir -p ~/.config
 
     # Symlinks at .config
