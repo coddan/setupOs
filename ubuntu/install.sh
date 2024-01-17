@@ -67,21 +67,7 @@ updateOS() {
 
 installDefaultPackages() {
   if [[ $osUpdateFlag == 1 ]]; then
-    sudo apt-get install -y \
-                batcat \
-                curl \
-                dirmngr \
-                exa \
-                fdfind \
-                fzf \
-                gcc \
-                git \
-                golang \
-                make \
-                neovim \
-                npm \
-                python3-venv \
-                ripgrep
+    sudo apt-get install -y "${Default_Packages[@]}"
   fi
 }
 
@@ -105,9 +91,7 @@ installMikTeX() {
     sudo apt-get update
 
     # MiKTeX
-    sudo apt-get -y install \
-                    miktex \
-                    latexmk
+    sudo apt-get -y install "${MikTeX_Packages[@]}"
 
     # Finish MikTeX shared installation setup.
     sudo miktexsetup --shared=yes finish
@@ -130,16 +114,7 @@ installTexLive() {
   if [[ $texliveFlag == 1 ]]; then
 
     # TexLive compnents
-    sudo apt-get -y install \
-                    texlive \
-                    texlive-latex-extra \
-                    texlive-publishers \
-                    texlive-science \
-                    texlive-pstricks \
-                    texlive-pictures \
-                    texlive-metapost \
-                    texlive-music \
-                    latexmk
+    sudo apt-get -y install "${TexLive_Packages[@]}"
 
     # Create ls-R databases
     sudo mktexlsr
@@ -163,7 +138,7 @@ installTexLive() {
 
 installXWindows() {
   [[ $xWindowsFlag == 1 ]] \
-    && sudo sudo apt-get install -y vim-gtk xsel \
+    && sudo sudo apt-get install -y "${XWindows_Packages[@]}" \
     && echo "X Windows support installed."
 }
 
@@ -174,21 +149,7 @@ installRbEnv() {
   if [[ $rbenvFlag == 1 ]]; then
 
     # Install rbenv dependencies.
-    sudo apt-get -y install \
-                    autoconf \
-                    bison \
-                    build-essential \
-                    curl \
-                    git \
-                    libgdbm-dev \
-                    libncurses5-dev \
-                    libffi-dev \
-                    libreadline-dev \
-                    libreadline-dev \
-                    libssl-dev \
-                    libyaml-dev \
-                    ruby-bundler \
-                    zlib1g-dev
+    sudo apt-get -y install "${RbEnv_Packages[@]}"
 
     git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
 
@@ -303,12 +264,7 @@ installRustPrograms() {
 installMutt() {
   if [[ $muttFlag == 1 ]]; then
 
-    sudo apt-get install -y \
-         neomutt \
-         curl \
-         isync \
-         msmtp \
-         pass
+    sudo apt-get install -y "${Mutt_Packages[@]}"
 
     git clone https://github.com/LukeSmithxyz/mutt-wizard
 
@@ -328,7 +284,7 @@ installMutt() {
 
 installJavaJre() {
   if [[ $javaJreFlag == 1 ]]; then
-    sudo apt-get install -y default-jdk
+    sudo apt-get install -y "${JavaJre_Packages[@]}"
   fi
 }
 
