@@ -50,7 +50,7 @@ loadConfig() {
 
   [[ $missingFile == 1 ]] && say 'Missing file(s) program exiting.' && exit
 
-
+}
 # -------------------------------------------------------------------------- }}}
 # {{{ Update OS
 
