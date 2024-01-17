@@ -42,7 +42,7 @@ main() {
 loadConfig() {
   missingFile=0
 
-  files=(config repos )
+  files=(config ../repos )
   for f in "${files[@]}"
   do
     source "$f"
