@@ -21,56 +21,11 @@ pip_packages=(
   "neovim-remote"
 )
 
-MikTeX_Packages=(
-    "miktex"
-    "latexmk"
-)
-
-
-
-TexLive_Packages=(
-    "texlive"
-    "texlive-latex-extra"
-    "texlive-publishers"
-    "texlive-science"
-    "texlive-pstricks"
-    "texlive-pictures"
-    "texlive-metapost" 
-    "texlive-music" 
-    "latexmk"
-) 
 
 XWindows_Packages=(
     "vim-gtk" 
     "xsel"
 )
-
-
-
-RbEnv_Packages=(
-    "autoconf" 
-    "bison"
-    "build-essential"
-    "curl"
-    "git"
-    "libgdbm-dev"
-    "libncurses5-dev"
-    "libffi-dev"
-    "libreadline-dev"
-    "libreadline-dev"
-    "libssl-dev"
-    "libyaml-dev"
-    "ruby-bundler"
-    "zlib1g-dev"
-)
-
-Mutt_Packages=(
-    "neomutt" 
-    "curl"
-    "isync"
-    "msmtp"
-    "pass"
-) 
 
 
 JavaJre_Packages=(

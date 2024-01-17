@@ -12,23 +12,11 @@ main() {
   loadConfig
   updateOS
   installDefaultPackages
-
-  installMikTeX
-  installTexLive
   installXWindows
-  installRbEnv
-  installRubyBuild
-
-  updateBashRc
-
-  installRuby
-  installRubyGems
   installRust
   installRustPrograms
   installPipPackages
   installJavaJre
-  installMutt
-
   cloneMyRepos
 
   # Setup symlinks.
@@ -74,60 +62,6 @@ installDefaultPackages() {
 }
 
 
-# -------------------------------------------------------------------------- }}}
-# {{{ MiKTeX
-
-installMikTeX() {
-  if [[ $miktexFlag == 1 ]]; then
-    echo 'Installing mixtex.'
-
-    # Register GPG key for Ubuntu and Linux Mint.
-    sudo apt-key adv \
-         --keyserver hkp://keyserver.ubuntu.com:80 \
-         --recv-keys $miktexGpgKey
-
-    # Installation source: Ubuntu 18.04, Linux Mint 19.
-    echo "deb http://miktex.org/download/${miktexSource}" \
-      | sudo tee /etc/apt/sources.list.d/miktex.list
-
-    # Update database
-    sudo apt-get update
-
-    # MiKTeX
-    sudo apt-get -y install "${MikTeX_Packages[@]}"
-
-    # Finish MikTeX shared installation setup.
-    sudo miktexsetup --shared=yes finish
-    sudo initexmf --admin --set-config-value [MPM]AutoInstall=1
-
-    # The MiXTeX team told me to update the package database twice.  See:
-    # https://github.com/MiKTeX/miktex/issues/724
-    sudo mpm --admin --update
-    mpm --update
-    sudo mpm --admin --update
-    mpm --update
-
-  fi
-}
-
-# -------------------------------------------------------------------------- }}}
-# {{{ TexLive
-
-installTexLive() {
-  if [[ $texliveFlag == 1 ]]; then
-    echo 'installing texlive.'
-
-    # TexLive compnents
-    sudo apt-get -y install "${TexLive_Packages[@]}"
-
-    # Create ls-R databases
-    sudo mktexlsr
-
-    # Init suer tree.
-    tlmgr init-usertree
-
-  fi
-}
 
 
 # -------------------------------------------------------------------------- }}}
@@ -148,58 +82,6 @@ installXWindows() {
 }
 
 # -------------------------------------------------------------------------- }}}
-# {{{ Install rbenv
-
-installRbEnv() {
-  if [[ $rbenvFlag == 1 ]]; then
-    echo 'Installing RbENV.'
-
-    # Install rbenv dependencies.
-    sudo apt-get -y install "${RbEnv_Packages[@]}"
-
-    git clone https://github.com/rbenv/rbenv.git $HOME/.rbenv
-
-    echo "RbEnv installed."
-
-  fi
-}
-
-# -------------------------------------------------------------------------- }}}
-# {{{ Install Ruby Build
-
-installRubyBuild() {
-  if [[ $rbenvFlag == 1 ]]; then
-    echo 'Installing RubyBuild OS.'
-
-    git clone https://github.com/rbenv/ruby-build.git \
-        $HOME/.rbenv/plugins/ruby-build
-
-    echo "ruby-build installed."
-
-  fi
-}
-
-# -------------------------------------------------------------------------- }}}
-# {{{ Update .bashrc
-
-updateBashRc() {
-  if [[ $rbenvFlag == 1 ]]; then
-    echo 'updating bashRC.'
-
-    echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> $HOME/.bashrc
-    echo 'eval "$(rbenv init -)"' >> $HOME/.bashrc
-    echo ".bashrc updated."
-
-    # Update path, rbenv, and shell
-    export PATH=$HOME/.rbenv/bin:$PATH
-    eval "$(rbenv init -)"
-    source $HOME/.bashrc
-    echo "Path and rbenv loaded with new shell."
-
-  fi
-}
-
-# -------------------------------------------------------------------------- }}}
 # {{{ InstgallBashGitPrompt
 
 installBashGitPrompt() {
@@ -212,34 +94,7 @@ installBashGitPrompt() {
   fi
 }
 
-# {{{ Install Ruby
 
-installRuby() {
-  if [[ $rbenvFlag == 1 ]]; then
-    echo 'Installing Ruby.'
-    rbenv init
-    rbenv install $rubyVersion
-    rbenv global $rubyVersion
-
-    echo "Ruby installed."
-  fi
-}
-
-# -------------------------------------------------------------------------- }}}
-# {{{ Install Ruby Gems
-
-installRubyGems() {
-  if [[ $rbenvFlag == 1 ]]; then
-    echo 'Installing rubygems.'
-    # Install Ruby Gems
-    gem install \
-        bundler \
-        rake \
-        rspec
-
-    echo "Ruby Gems installed."
-  fi
-}
 
 # -------------------------------------------------------------------------- }}}
 # {{{ Install Rust
@@ -262,26 +117,6 @@ installRustPrograms() {
   if [[ $rustProgramsFlag == 1 ]]; then
     echo 'Installing rust programs.'
     cargo install exa
-
-  fi
-}
-
-# -------------------------------------------------------------------------- }}}
-# {{{ Install Mutt
-
-installMutt() {
-  if [[ $muttFlag == 1 ]]; then
-    echo 'Installing mutt.'
-    sudo apt-get install -y "${Mutt_Packages[@]}"
-
-    git clone https://github.com/LukeSmithxyz/mutt-wizard
-
-    cd mutt-wizard
-
-    sudo make install
-
-    echo "neomutt and mutt-wizzard are installed."
-    echo "You must run the mutt-wizzard manually."
 
   fi
 }

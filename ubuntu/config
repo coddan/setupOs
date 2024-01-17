@@ -1,15 +1,9 @@
 #!/bin/bash
 
-gitBashPromptFlag=1
 javaJreFlag=1
-miktexFlag=1
-muttFlag=1
 osUpdateFlag=1
-rbenvFlag=1
-resolvFlag=1
 rustFlag=1
 rustProgramsFlag=1
-texliveFlag=1
 xWindowsFlag=1
 symlinksFlag=1
 pipPackagesFlag=1
@@ -19,8 +13,5 @@ myReposFlag=1
 # {{{ Other variables used during product installation.
 
 cloneRoot=$HOME/git
-miktexGpgKey='D6BC243565B2087BC3F897C9277A7293F59E4889'
-miktexSource='ubuntu focal universe'
-rubyVersion='3.2.2'
 
 # -------------------------------------------------------------------------- }}}
