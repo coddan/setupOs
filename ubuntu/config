@@ -1,6 +1,5 @@
 #!/bin/bash
 
-echoConfigFlag=1
 gitBashPromptFlag=1
 javaJreFlag=1
 miktexFlag=1

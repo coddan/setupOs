@@ -1,0 +1,8 @@
+# {{{  GitHub repositories to clone.
+
+# These https://github.com/coddan/ public repositories.
+
+repos=(
+  "dotfiles"
+  "nvim"
+)

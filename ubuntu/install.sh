@@ -40,14 +40,16 @@ main() {
 # {{{ Load configuraiton options.
 
 loadConfig() {
-  if [[ -f config ]]; then
-    [[ $echoConfigFlag == 1 ]] && sudo cat config
-    source config
-  else
-    echo "config not found."
-    exit
-  fi
-}
+  missingFile=0
+
+  files=(config repos )
+  for f in "${files[@]}"
+  do
+    source "$f"
+  done
+
+  [[ $missingFile == 1 ]] && say 'Missing file(s) program exiting.' && exit
+
 
 # -------------------------------------------------------------------------- }}}
 # {{{ Update OS
