@@ -1,12 +1,4 @@
 #!/bin/bash
-# {{{ Notes
-#
-# Notes:
-#   1) 0 == false && 1 == true ... Duh!
-#   2) Options are listed alphabetically only because I scan them faster.
-#
-#shellcheck disable=SC2034
-#
 # -------------------------------------------------------------------------- }}}
 # {{{ Products to install.
 

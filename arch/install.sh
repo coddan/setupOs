@@ -57,7 +57,6 @@ main() {
   installOtherApps
 
   # Final personalization.
-  swapCapsLockAndEscKey
   [[ -f $HOME/.bashrc ]] && source "$HOME/.bashrc"
 }
 
