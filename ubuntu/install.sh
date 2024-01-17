@@ -143,8 +143,8 @@ installTexLive() {
 installXWindows() {
   [[ $xWindowsFlag == 1 ]]
     echo 'Installing xWindows.'
-    && sudo sudo apt-get install -y "${XWindows_Packages[@]}" \
-    && echo "X Windows support installed."
+    sudo sudo apt-get install -y "${XWindows_Packages[@]}"
+    echo "X Windows support installed."
 }
 
 # -------------------------------------------------------------------------- }}}
