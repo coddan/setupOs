@@ -1,9 +1,7 @@
 Default_Packages=(
-    "batcat"
     "curl"
     "dirmngr" 
     "exa"
-    "fdfind"
     "fzf"
     "gcc"
     "git"

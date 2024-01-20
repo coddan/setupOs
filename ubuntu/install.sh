@@ -9,6 +9,8 @@
 # {{{ Main function
 
 main() {
+  # Save current working directory.
+  cwd=$(pwd)
   loadConfig
   updateOS
   installDefaultPackages
@@ -22,6 +24,8 @@ main() {
   # Setup symlinks.
   deleteSymLinks
   createSymLinks
+
+  [[ -f $HOME/.bashrc ]] && source "$HOME/.bashrc"
 }
 
 # -------------------------------------------------------------------------- }}}
@@ -30,7 +34,7 @@ main() {
 loadConfig() {
   missingFile=0
 
-  files=(config ../repos )
+  files=(config ../repos packages)
   for f in "${files[@]}"
   do
     source "$f"
@@ -55,7 +59,7 @@ updateOS() {
 # {{{ Install my default packages.
 
 installDefaultPackages() {
-  if [[ $osUpdateFlag == 1 ]]; then
+  if [[ $installDefaultPackages == 1 ]]; then
     echo 'Installing default packages.'
     sudo apt-get install -y "${Default_Packages[@]}"
   fi
@@ -188,23 +192,6 @@ createSymLinks() {
     ln -fsv ~/git/dotfiles/git/gitconfig         ~/.gitconfig
     ln -fsv ~/git/dotfiles/git/gitignore_global  ~/.gitignore_global
  fi
-}
-
-# -------------------------------------------------------------------------- }}}
-# {{{ Echo something with a separator line.
-
-say() {
-  echo '**********************'
-  echo "$@"
-}
-
-# -------------------------------------------------------------------------- }}}
-# {{{ Echo a command and then execute it.
-
-sayAndDo() {
-  say "$@"
-  $@
-  echo
 }
 
 # -------------------------------------------------------------------------- }}}
